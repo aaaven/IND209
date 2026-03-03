@@ -1,38 +1,6 @@
-### IND 209 Concepts and Interactions
 
+## Studio Context
 ##### By *Dr. [Aven Le ZHOU](https://www.aven.cc)*, 2026
-
----
-
-### 25/26-S2 Teaching Team:
-
-- **Module Leader:** *Dr. Aven Le ZHOU*
-- **Co-Lecturer:** *Dr. Mariia Zolotova*
-
-----
-
-#### Aven-Le ZHOU
-
-- **Ph.D. Computational Media and Arts**
-    - *Hong Kong Uni. of Science and Technology*
-- **B.Arch. Architecture**
-    - *Huazhong Uni. of Science and Technology*
-
-----
-
-#### Arts and Technology ~ Interactive Art
-
-- Assitant Professor, XJTLU. 2020 - Now
-- Instructor, NYU Shanghai. 2019 - 2020.
-- Research Fellow, NYU Shanghai. 2014 - 2019. 
-
----
-
-### What do we do in this module?
-
----
-
-### Designing Infrastructural–Embodied Couplings
 
 ---
 
@@ -52,10 +20,14 @@ Note: A Small Confession of mine
 
 Last week, I looked at my own AI usage.
 
-• Multiple sessions per day  
+• 2-3 new topics per day (19 sessions in 6 days)
+
 • Frequent “Regenerate”  
+
 • “Improve this.”  
+
 • “Rewrite again.”  
+
 • “One more version.”
 </div>
 

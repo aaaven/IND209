@@ -1,6 +1,6 @@
 
-### Designing Infrastructural–Embodied Couplings
-
+### Studio Structure
+##### By *Dr. [Aven Le ZHOU](https://www.aven.cc)*, 2026
 
 ---
 
