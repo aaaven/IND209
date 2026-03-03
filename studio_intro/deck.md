@@ -36,17 +36,17 @@
 
 ### How This Studio Works
 
-- You work in groups of four through three stages
-- In the end, you produce ONE final GROUP design 
-- In every stage, the visible output is (more or less) one A2 poster per student
-- You only work on 3 x A2-size visual output through the studio 
+- You work **in groups of four through three stages**<!-- .element: class="fragment grow highlight-current-red" -->
+- In the end, you produce **ONE final GROUP design**<!-- .element: class="fragment grow highlight-current-red" --> 
+- In every stage, the visible output is (more or less) **one A2 poster per student**<!-- .element: class="fragment grow highlight-current-red" -->
+- You only work on **3 x A2-size posters**<!-- .element: class="fragment grow highlight-current-red" --> through the studio 
 
 ----
 
-- Quality > Quantity
-- Depth > Volume
+- **Quality**<!-- .element: class="fragment grow highlight-current-red" --> > Quantity
+- **Depth**<!-- .element: class="fragment grow highlight-current-red" --> > Volume
 - Do massive thinking, massive research, massive exploration 
-- Show only the BEST.
+- Show only the **BEST**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 ---
 
@@ -62,11 +62,11 @@
 
 This is not a “produce 100 things” studio.
 
-This is a Research-driven, concept-heavy, experiment-based studio.
+This is a **Research-driven**<!-- .element: class="fragment grow highlight-current-red" -->, **concept-heavy**<!-- .element: class="fragment grow highlight-current-red" -->, **experiment-based**<!-- .element: class="fragment grow highlight-current-red" --> design studio.
 
 Your visible workload is light. But I want your invisible investigative workload is serious.
 
-And that’s what makes it both enjoyable and fruitful.
+And that’s what makes it both **enjoyable**<!-- .element: class="fragment grow highlight-current-red" --> and **fruitful**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -90,12 +90,13 @@ You are not:
 
 <div style="text-align: left;">
 
-You are (not scietifically but design-driven):
+You are:
 
-- Modeling infrastructure
-- Extracting dynamic variables
-- Translating systems into embodiment
+- Modeling infrastructure and extracting dynamic variables
+- Translating systems into embodied experiences
 - Designing behavioral modulation
+
+Not *scietifically*<!-- .element: class="fragment grow highlight-current-red" --> but **design-driven**<!-- .element: class="fragment grow highlight-current-red" -->
 
 </div>
 
@@ -103,7 +104,7 @@ You are (not scietifically but design-driven):
 
 <div style="text-align: left;">
 
-Or say, design thinking.
+Or say, **design thinking**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -137,7 +138,7 @@ You will see what I mean in the end.
 
 You are not only working in groups of four.
 
-In a way, you are working as one giant group of the entire class.
+In a way, you are working as **one giant group of the entire class**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -150,9 +151,9 @@ In a way, you are working as one giant group of the entire class.
 <div style="text-align: left;">
 
 Stage 1:
-- Every student produces and submit A1behavior–consequence mappings.
+- Every student produces and submit four **behavior–consequence mappings**<!-- .element: class="fragment grow highlight-current-red" -->.
 - You review and vote (after assignment 1 is marked).
-- The strongest ideas become shared material.
+- The strongest ideas become **shared materials**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -161,10 +162,10 @@ Stage 1:
 <div style="text-align: left;">
 
 Stage 2:
-- Everyone develops and submit coupling concepts.
+- Everyone develops and submit **coupling concepts**<!-- .element: class="fragment grow highlight-current-red" -->.
 - Groups vote internally (after assignment 2A is marked).
-- The strongest coupling mechanisms survive.
-- Those get prototyped, that's assignment 2 submission.
+- **The promising coupling conceptss get prototyped**<!-- .element: class="fragment grow highlight-current-red" -->.
+
 
 </div>
 
@@ -173,8 +174,8 @@ Stage 2:
 <div style="text-align: left;">
 
 Stage 3:
-- We vote again (after assignment 2 is marked).
-- The most promising coupling mechanisms scale into interfaces.
+- We vote again the coulping mechanisms (after assignment 2 is marked).
+- The most promising coupling mechanisms scale into **final interfaces design**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -182,7 +183,7 @@ Stage 3:
 
 <div style="text-align: left;">
 
-Through three stages, this is evolutionary of Concepts and Interactions.
+Through three stages, this is **the evolutionary Concepts and Interactions**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -199,7 +200,7 @@ You will :
 - adopt each other's ideas.
 - combine someone else’s with yours.
 - refined them collectively.
-- lead to the foundation of the final interface.
+- which leds to the foundation of the final interface.
 
 </div>
 
@@ -210,7 +211,7 @@ You will :
 So:
 
 Even though you work individually and in small groups,
-You are participating in a class-wide collaboration.
+You are participating in **a class-wide collaboration**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
 
@@ -224,10 +225,10 @@ You are participating in a class-wide collaboration.
 
 Not individual nor small groups of four.
 
-Our class and all of you collectively become a design intelligence, one distributed intelligence.
+Our class and all of you collectively become **a design intelligence**<!-- .element: class="fragment grow highlight-current-red" -->, **one distributed intelligence**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 Ideas iterates collectively.
 
-Everything improves.
+**Everything improves**<!-- .element: class="fragment grow highlight-current-red" -->.
 
 </div>
