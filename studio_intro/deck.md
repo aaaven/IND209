@@ -54,6 +54,12 @@
 
 ## Good News
 
+</div>
+
+----
+
+<div style="text-align: left;">
+
 This is not a “produce 100 things” studio.
 
 This is a Research-driven, concept-heavy, experiment-based studio.
@@ -66,9 +72,11 @@ And that’s what makes it both enjoyable and fruitful.
 
 ---
 
-<div style="text-align: left;">
+### This Is a Research-Driven Studio
 
-#### This Is a Research-Driven Studio
+----
+
+<div style="text-align: left;">
 
 You are not:
 
@@ -89,15 +97,25 @@ You are (not scietifically but design-driven):
 - Translating systems into embodiment
 - Designing behavioral modulation
 
+</div>
+
+----
+
+<div style="text-align: left;">
+
 Or say, design thinking.
 
 </div>
 
 ---
 
-<div style="text-align: left;">
+#### This Studio is Structured to Maximize Quality of 
 
-#### Structured to Prioritize and Maximize Quality
+### Concepts and Interactions 
+
+----
+
+<div style="text-align: left;">
 
 We do not want 20 average ideas.
 
@@ -115,21 +133,21 @@ You will see what I mean in the end.
 
 <div style="text-align: left;">
 
-#### The Most Important Voting Mechanism 
+### The Voting Mechanism 
 
 You are not only working in groups of four.
 
-In a way, you are working as one giant group.
-
-The entire class.
+In a way, you are working as one giant group of the entire class.
 
 </div>
 
 ---
 
-<div style="text-align: left;">
+### How the Collective "Intelligence" Works
 
-#### How the Collective "Intelligence" Works
+----
+
+<div style="text-align: left;">
 
 Stage 1:
 - Every student produces and submit A1behavior–consequence mappings.
@@ -158,24 +176,34 @@ Stage 3:
 - We vote again (after assignment 2 is marked).
 - The most promising coupling mechanisms scale into interfaces.
 
-This is evolutionary selection.
+</div>
+
+----
+
+<div style="text-align: left;">
+
+Through three stages, this is evolutionary of Concepts and Interactions.
 
 </div>
 
 ---
 
+### What This Means
+
+
+----
+
 <div style="text-align: left;">
+You will :
 
-# What This Means
-
-Your idea might:
-
-- Be adopted by others.
-- Be combined with someone else’s.
-- Be refined collectively.
-- Become the foundation of the final interface.
+- adopt each other's ideas.
+- combine someone else’s with yours.
+- refined them collectively.
+- lead to the foundation of the final interface.
 
 </div>
+
+----
 
 <div style="text-align: left;">
 
@@ -188,16 +216,18 @@ You are participating in a class-wide collaboration.
 
 ---
 
-# Think of It As
+### Think of It As
 
-Not 6 small groups.
+----
 
-But one distributed intelligence.
+<div style="text-align: left;">
 
-Our class and all of you collectively become a design intelligence.
+Not individual nor small groups of four.
 
-Strong ideas survive.
-Weak ideas evolve.
+Our class and all of you collectively become a design intelligence, one distributed intelligence.
+
+Ideas iterates collectively.
+
 Everything improves.
 
----
+</div>
