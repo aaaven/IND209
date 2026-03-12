@@ -43,10 +43,10 @@
 
 ---
 
-### The Cloud Illusion<div style="text-align:center">
+### The Cloud Illusion
 
 <div style="display:flex; gap:40px; align-items:flex-start;">
-
+   
 <div style="flex:1;">
 
 #### What users think AI is
@@ -57,22 +57,21 @@
 - abstract “cloud”  
 - no visible cost  
 
-</div>
+    </div>
 
 <div style="flex:1;" class="fragment">
 
 #### What actually exists
 
-- network rounting  
+- network routing  
 - data centers  
 - GPU clusters  
 - cooling systems  
 - electrical grid  
 - planetary extraction  
 
-</div>
-
-</div>
+    </div>
+  </div>
 
 ---
 
@@ -130,7 +129,6 @@ A system is:
 ## Examples of systems
 
 
-<div style="font-size:0.9em; line-height:1.9; margin-top:40px;">
 <ul>
 <li class="fragment">ecosystems</li>
 <li class="fragment">cities</li>
@@ -139,7 +137,6 @@ A system is:
 <li class="fragment">the internet</li>
 <li class="fragment">AI infrastructure</li>
 </ul>
-</div>
 
 ---
 
@@ -290,22 +287,15 @@ You investigate and visualize AI as a:
 
 #### From infrastructure to planetary consequences, how they are connected:
 
-<div style="font-size:1em; line-height:1.5; text-align: center; margin-top:50px;">
-
 <span class="fragment">Electricity → grid dependence → carbon emissions</span><br>
 <span class="fragment">Cooling → water consumption → heat discharge</span><br>
 <span class="fragment">Hardware → mineral extraction</span><br>
 <span class="fragment">Lifecycle → obsolescence → e-waste</span><br>
 <span class="fragment">Data center expansion → land occupation</span>
 
-</div>
-
-
 ---
 
 #### This is the key shift:
-
-<div style="font-size:1m; line-height:2; margin-top:60px;">
 
 <span class="fragment">The infrastructure is a technical/industrial system.</span><br><br>
 <span class="fragment">It is also: </span><br>
@@ -315,8 +305,6 @@ You investigate and visualize AI as a:
 <li class="fragment">A material system.</li>
 <li class="fragment">A territorial system.</li>
 </ul>
-
-</div>
 
 ---
 
@@ -356,7 +344,7 @@ It explains AI is not just:
 - interface
 - interaction
 
-</div>
+    </div>
 
 <div style="flex:1;" class="fragment">
 
@@ -369,7 +357,7 @@ It is also:
 - extraction
 - waste
 
-</div>
+    </div>
 
 </div>
 
