@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Portfolio Flipbook</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --ink: #f5f5f2;
+      --muted: #9f9f98;
+      --card: rgba(15, 15, 15, 0.82);
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #ffffff;
+      --accent-soft: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      --book-width: min(78vw, 1200px);
+      --page-ratio: 1.4142;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.06), transparent 18%),
+        linear-gradient(135deg, #050505 0%, #0b0b0b 45%, #111111 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black, transparent 85%);
+    }
+
+    .shell {
+      width: min(1440px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 24px;
+      align-items: end;
+      padding: 12px 12px 28px;
+    }
+
+    .eyebrow,
+    .meta-label {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 10px 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 0.93;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: rgba(245, 245, 242, 0.82);
+    }
+
+    .meta {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+    }
+
+    .controls {
+      margin: 0 12px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      align-items: center;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button.primary {
+      background: var(--ink);
+      color: #f6efe7;
+    }
+
+    button.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .viewer-wrap {
+      padding: 0 12px;
+    }
+
+    .viewer-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 28px;
+      min-height: 70vh;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.09), transparent 34%),
+        linear-gradient(180deg, rgba(14, 14, 14, 0.96), rgba(8, 8, 8, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .book-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      perspective: 2200px;
+      min-height: calc(var(--book-width) / var(--page-ratio));
+    }
+
+    .book-stage::before {
+      content: "";
+      position: absolute;
+      width: min(72vw, 1120px);
+      height: 36px;
+      bottom: 2%;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.56);
+      filter: blur(24px);
+      transform: translateY(16px);
+    }
+
+    .book {
+      position: relative;
+      width: var(--book-width);
+      aspect-ratio: var(--page-ratio);
+      transform-style: preserve-3d;
+    }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      transform-origin: 1.8% center;
+      transform-style: preserve-3d;
+      transition: transform 1100ms cubic-bezier(0.2, 0.72, 0.18, 1), z-index 0ms 550ms, filter 1100ms ease;
+      border-radius: 18px 26px 26px 18px;
+      will-change: transform;
+    }
+
+    .page.flipped {
+      transform: rotateY(-178deg) translateX(-4px);
+      filter: brightness(0.88);
+    }
+
+    .page-face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      backface-visibility: hidden;
+      background: #fbfbf8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+        0 18px 40px rgba(0, 0, 0, 0.34);
+    }
+
+    .page-face::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 10%, transparent 88%, rgba(0, 0, 0, 0.12));
+      pointer-events: none;
+    }
+
+    .page-face::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 0%, transparent 58%, rgba(255, 255, 255, 0.2) 74%, rgba(0, 0, 0, 0.1) 100%);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .page-back {
+      transform: rotateY(180deg);
+      background:
+        linear-gradient(135deg, rgba(244, 244, 239, 1), rgba(228, 228, 224, 1));
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: white;
+    }
+
+    .page-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: rgba(18, 18, 18, 0.58);
+      z-index: 2;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(22px, 3vw, 42px);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 30%),
+        linear-gradient(150deg, rgba(8, 8, 8, 0.98), rgba(20, 20, 20, 0.96));
+      color: #f8f8f4;
+    }
+
+    .cover h2 {
+      margin: 12px 0 0;
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 7ch;
+    }
+
+    .cover p {
+      align-self: end;
+      margin: 0;
+      max-width: 30ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .status-bar {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .status {
+      margin: 14px 12px 0;
+      min-height: 1.5em;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .loading {
+      position: absolute;
+      inset: 28px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: "Arial Narrow", Arial, sans-serif;
+    }
+
+    .loading.hidden {
+      display: none;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .book-stage {
+        min-height: calc(min(88vw, 1200px) / var(--page-ratio));
+      }
+
+      :root {
+        --book-width: min(88vw, 1200px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .viewer-frame {
+        padding: 18px;
+        min-height: 58vh;
+      }
+
+      .status-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .page-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Design Portfolio</div>
+        <h2>Understanding AI Infrastructure</h2>
+        <p>
+          A portfolio-style flipbook built for a hosted A3 landscape PDF. It opens like a presentation piece,
+          keeps the paper-like rhythm of print, and lets viewers move through each poster with a tactile page-turn.
+        </p>
+      </div>
+      <aside class="meta">
+        <div>
+          <div class="meta-label">All Submission</div>
+          <div class="meta-value" id="sourceLabel">Local sample PDF</div>
+        </div>
+        <div>
+          <div class="meta-label">Format</div>
+          <div class="meta-value">A3 Landscape Posters</div>
+        </div>
+        <!-- <div>
+          <div class="meta-label">Experience</div>
+          <div class="meta-value">3D Flipbook Portfolio</div>
+        </div> -->
+      </aside>
+    </section>
+
+    <section class="controls">
+      <button class="secondary" id="prevBtn" type="button">Previous</button>
+      <button class="secondary" id="nextBtn" type="button">Next</button>
+    </section>
+
+    <div class="viewer-wrap">
+      <section class="viewer-frame">
+        <div class="loading" id="loading">Preparing portfolio...</div>
+        <div class="book-stage">
+          <div class="book" id="book"></div>
+        </div>
+        <div class="status-bar">
+          <div id="pageLabel">Cover</div>
+          <input id="scrubber" type="range" min="0" max="0" value="0">
+          <div id="pageCountLabel">0 pages</div>
+        </div>
+      </section>
+      <div class="status" id="statusText"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs";
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs";
+
+    const DEFAULT_PDFS = [
+      "pdf/CW1.pdf",
+      "pdf/CW2.pdf",
+      "pdf/DAC.pdf"
+    ];
+    const book = document.getElementById("book");
+    const loading = document.getElementById("loading");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const scrubber = document.getElementById("scrubber");
+    const pageLabel = document.getElementById("pageLabel");
+    const pageCountLabel = document.getElementById("pageCountLabel");
+    const statusText = document.getElementById("statusText");
+    const sourceLabel = document.getElementById("sourceLabel");
+
+    let pageElements = [];
+    let currentIndex = 0;
+    let portfolioSources = [...DEFAULT_PDFS];
+
+    function setStatus(message, isError = false) {
+      statusText.textContent = message;
+      statusText.style.color = isError ? "#9d2f1f" : "var(--muted)";
+    }
+
+    function updateControls() {
+      const total = pageElements.length;
+      const contentPages = Math.max(total - 1, 0);
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === total - 1 || total === 0;
+      scrubber.max = String(Math.max(total - 1, 0));
+      scrubber.value = String(currentIndex);
+
+      if (currentIndex === 0) {
+        pageLabel.textContent = "Cover";
+      } else {
+        pageLabel.textContent = `Page ${currentIndex} of ${contentPages}`;
+      }
+
+      pageCountLabel.textContent = contentPages === 1 ? "1 poster page" : `${contentPages} poster pages`;
+    }
+
+    function syncBook() {
+      pageElements.forEach((page, index) => {
+        const flipped = index < currentIndex;
+        page.classList.toggle("flipped", flipped);
+        page.style.zIndex = String(pageElements.length - index);
+        page.style.transform = flipped
+          ? `rotateY(-178deg) translateX(-4px) translateZ(${index * -0.4}px)`
+          : `rotateY(0deg) translateX(${index * 0.22}px) translateZ(${index * -0.4}px)`;
+      });
+      updateControls();
+    }
+
+    function goTo(index) {
+      currentIndex = Math.min(Math.max(index, 0), Math.max(pageElements.length - 1, 0));
+      syncBook();
+    }
+
+    function duplicateCanvas(sourceCanvas) {
+      const clone = document.createElement("canvas");
+      clone.width = sourceCanvas.width;
+      clone.height = sourceCanvas.height;
+      clone.getContext("2d").drawImage(sourceCanvas, 0, 0);
+      return clone;
+    }
+
+    function createCaption(text, count) {
+      const caption = document.createElement("div");
+      caption.className = "page-caption";
+
+      const left = document.createElement("span");
+      left.textContent = text;
+      const right = document.createElement("span");
+      right.textContent = count;
+
+      caption.append(left, right);
+      return caption;
+    }
+
+    function createFace(extraClass = "") {
+      const face = document.createElement("div");
+      face.className = `page-face ${extraClass}`.trim();
+      return face;
+    }
+
+    function getDisplayName(pdfUrl) {
+      const clean = pdfUrl.split("/").pop() || pdfUrl;
+      return clean.replace(/\.pdf$/i, "");
+    }
+
+    function normalizePdfHref(href) {
+      if (!href) return "";
+
+      const withoutQuery = href.split("?")[0].split("#")[0];
+      const fileName = withoutQuery.split("/").pop();
+      if (!fileName) return "";
+      return `pdf/${fileName}`;
+    }
+
+    function buildCover(totalPages, portfolioName) {
+      const page = document.createElement("article");
+      page.className = "page";
+
+      const front = createFace("cover");
+      front.innerHTML = `
+        <div class="eyebrow">Portfolio Edition</div>
+        <h2>${portfolioName}</h2>
+        <p>
+          A curated sequence of large-format graphic work presented as a tactile digital book.
+          Use the controls or arrow keys to turn through the collection.
+        </p>
+        <div class="status-bar">
+          <span>Format: A3 Landscape</span>
+          <span>${totalPages} Pages</span>
+          <span>Folder Portfolio</span>
+        </div>
+      `;
+
+      const back = createFace("page-back cover");
+      back.innerHTML = `
+        <div class="eyebrow">Opening Spread</div>
+        <h2>Design Portfolio</h2>
+        <p>
+          This viewer renders every page directly from the source PDF, preserving layout while adding a presentation-grade flip interaction.
+        </p>
+        <div class="status-bar">
+          <span>Turn to Begin</span>
+          <span>Page 0</span>
+          <span>Interactive Preview</span>
+        </div>
+      `;
+
+      page.append(front, back);
+      return page;
+    }
+
+    async function discoverFolderPdfs() {
+      try {
+        const response = await fetch("pdf/");
+        if (!response.ok) {
+          return [...DEFAULT_PDFS];
+        }
+
+        const html = await response.text();
+        const matches = [...html.matchAll(/href=["']([^"']+\.pdf(?:\?[^"']*)?)["']/gi)]
+          .map((match) => match[1])
+          .map((href) => normalizePdfHref(href))
+          .filter(Boolean);
+
+        const unique = [...new Set(matches)];
+        return unique.length ? unique.sort((a, b) => a.localeCompare(b)) : [...DEFAULT_PDFS];
+      } catch {
+        return [...DEFAULT_PDFS];
+      }
+    }
+
+    async function loadPortfolioLibrary() {
+      portfolioSources = await discoverFolderPdfs();
+    }
+
+    function buildSectionTitle(names) {
+      if (names.length === 1) return names[0];
+      return "Understanding AI Infrastructure";
+    }
+
+    function buildSectionCaption(name, pageNumber) {
+      return `${name}  ${String(pageNumber).padStart(2, "0")}`;
+    }
+
+    async function renderLibrary(pdfUrls) {
+      const portfolioName = buildSectionTitle(pdfUrls.map(getDisplayName));
+      sourceLabel.textContent = `${pdfUrls.length} PDFs`;
+      loading.classList.remove("hidden");
+      setStatus("Loading portfolio...");
+      book.replaceChildren();
+      pageElements = [];
+      currentIndex = 0;
+      updateControls();
+
+      try {
+        let totalPages = 0;
+        const documents = [];
+        for (const pdfUrl of pdfUrls) {
+          const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+          documents.push({ pdf, name: getDisplayName(pdfUrl) });
+          totalPages += pdf.numPages;
+        }
+
+        const cover = buildCover(totalPages, portfolioName);
+        book.appendChild(cover);
+        pageElements.push(cover);
+
+        let runningPage = 1;
+        for (const { pdf, name } of documents) {
+          for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+            const pdfPage = await pdf.getPage(pageNumber);
+            const viewport = pdfPage.getViewport({ scale: 1.6 });
+
+            const renderCanvas = document.createElement("canvas");
+            renderCanvas.width = viewport.width;
+            renderCanvas.height = viewport.height;
+            await pdfPage.render({
+              canvasContext: renderCanvas.getContext("2d"),
+              viewport
+            }).promise;
+
+            const page = document.createElement("article");
+            page.className = "page";
+
+            const front = createFace();
+            front.append(
+              duplicateCanvas(renderCanvas),
+              createCaption(name, String(runningPage).padStart(2, "0"))
+            );
+
+            const back = createFace("page-back");
+            back.append(
+              duplicateCanvas(renderCanvas),
+              createCaption(buildSectionCaption(name, pageNumber), String(runningPage).padStart(2, "0"))
+            );
+
+            page.append(front, back);
+            page.style.zIndex = String(totalPages - runningPage);
+
+            book.appendChild(page);
+            pageElements.push(page);
+            runningPage += 1;
+          }
+        }
+
+        syncBook();
+        loading.classList.add("hidden");
+        setStatus(`Loaded ${pdfUrls.length} PDFs with ${totalPages} pages as one flipbook.`);
+      } catch (error) {
+        loading.classList.add("hidden");
+        book.replaceChildren();
+        pageElements = [];
+        updateControls();
+        setStatus(`Could not load PDF: ${error.message}`, true);
+      }
+    }
+
+    prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
+    nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
+    scrubber.addEventListener("input", (event) => goTo(Number(event.target.value)));
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") goTo(currentIndex + 1);
+      if (event.key === "ArrowLeft") goTo(currentIndex - 1);
+    });
+
+    await loadPortfolioLibrary();
+    renderLibrary(portfolioSources);
+  </script>
+</body>
+</html>
