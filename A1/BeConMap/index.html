@@ -473,8 +473,8 @@
   <div class="shell">
     <section class="hero">
       <div>
-        <div class="eyebrow">Design Portfolio</div>
-        <h2>Behavior-Consequence Mapping</h2>
+        <div class="eyebrow" id="heroEyebrow">Design Portfolio</div>
+        <h2 id="heroTitle">Behavior-Consequence Mapping</h2>
       </div>
     </section>
 
@@ -500,17 +500,17 @@
     </section>
 
     <section class="details">
-      <div class="details-copy">
+      <div class="details-copy" id="detailsCopy">
         A portfolio page presenting 28 individual works. Beginning with ordinary AI behaviours and small acts of convenience, students traced how these interactions activate wider infrastructural processes and planetary consequences. Each work maps the relation between user action, hidden infrastructural activity, and planetary impact over time.
       </div>
       <aside class="meta">
         <div>
-          <div class="meta-label">All Submission</div>
+          <div class="meta-label" id="submissionsLabel">All Submission</div>
           <div class="meta-value" id="sourceLabel">Local sample PDF</div>
         </div>
         <div>
-          <div class="meta-label">Format</div>
-          <div class="meta-value">A3 Landscape Posters</div>
+          <div class="meta-label" id="formatLabel">Format</div>
+          <div class="meta-value" id="formatValue">A3 Landscape Posters</div>
         </div>
       </aside>
     </section>
@@ -522,36 +522,7 @@
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs";
 
-    const DEFAULT_PDFS = [
-      "pdf/IND209-CW1-2471568.pdf",
-      "pdf/IND209_CW1_1019676.pdf",
-      "pdf/IND209_CW1_1019692.pdf",
-      "pdf/IND209_CW1_1019694.pdf",
-      "pdf/IND209_CW1_2252660.pdf",
-      "pdf/IND209_CW1_2253402.pdf",
-      "pdf/IND209_CW1_2360152.pdf",
-      "pdf/IND209_CW1_2360194.pdf",
-      "pdf/IND209_CW1_2363144.pdf",
-      "pdf/IND209_CW1_2363205.pdf",
-      "pdf/IND209_CW1_2363770.pdf",
-      "pdf/IND209_CW1_2363845.pdf",
-      "pdf/IND209_CW1_2468225.pdf",
-      "pdf/IND209_CW1_2468290.pdf",
-      "pdf/IND209_CW1_2468314.pdf",
-      "pdf/IND209_CW1_2469004.pdf",
-      "pdf/IND209_CW1_2469658.pdf",
-      "pdf/IND209_CW1_2469744.pdf",
-      "pdf/IND209_CW1_2470142.pdf",
-      "pdf/IND209_CW1_2471419.pdf",
-      "pdf/IND209_CW1_2472332.pdf",
-      "pdf/IND209_CW1_2472440.pdf",
-      "pdf/IND209_CW1_2472877.pdf",
-      "pdf/IND209_CW1_2473407.pdf",
-      "pdf/IND209_CW1_255291.pdf",
-      "pdf/IND209_CW1_2581202.pdf",
-      "pdf/IND209_CW1_X_1019675.pdf",
-      "pdf/ind209_CW1_2468875.pdf"
-    ];
+    const DEFAULT_PDFS = [];
     const book = document.getElementById("book");
     const loading = document.getElementById("loading");
     const prevBtn = document.getElementById("prevBtn");
@@ -563,6 +534,12 @@
     const sourceLabel = document.getElementById("sourceLabel");
     const statusBar = document.querySelector(".status-bar");
     const readyIndicator = document.getElementById("readyIndicator");
+    const heroEyebrow = document.getElementById("heroEyebrow");
+    const heroTitle = document.getElementById("heroTitle");
+    const detailsCopy = document.getElementById("detailsCopy");
+    const submissionsLabel = document.getElementById("submissionsLabel");
+    const formatLabel = document.getElementById("formatLabel");
+    const formatValue = document.getElementById("formatValue");
 
     let pageElements = [];
     let currentIndex = 0;
@@ -576,6 +553,111 @@
     let portfolioDocuments = [];
     let totalContentPages = 0;
     const pageCache = new Map();
+    const contentConfig = {
+      eyebrow: "Design Portfolio",
+      title: "Behavior-Consequence Mapping",
+      description: "A portfolio page presenting 28 individual works. Beginning with ordinary AI behaviours and small acts of convenience, students traced how these interactions activate wider infrastructural processes and planetary consequences. Each work maps the relation between user action, hidden infrastructural activity, and planetary impact over time.",
+      submissionsLabel: "All Submission",
+      formatLabel: "Format",
+      formatValue: "A3 Landscape Posters",
+      coverIntro: "IND 209 Concepts and Interactions."
+    };
+
+    async function loadPdfList() {
+      try {
+        const response = await fetch("pdf-list.md", { cache: "no-store" });
+        if (!response.ok) {
+          return [...DEFAULT_PDFS];
+        }
+        const markdown = await response.text();
+        const parsed = parsePdfListMarkdown(markdown);
+        return parsed.length ? parsed : [...DEFAULT_PDFS];
+      } catch {
+        return [...DEFAULT_PDFS];
+      }
+    }
+
+    function parsePdfListMarkdown(markdown) {
+      return markdown
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith("- "))
+        .map((line) => line.slice(2).trim())
+        .filter((line) => /\.pdf$/i.test(line));
+    }
+
+    async function loadContentConfig() {
+      try {
+        const response = await fetch("content.md", { cache: "no-store" });
+        if (!response.ok) {
+          applyContentConfig();
+          return;
+        }
+        const markdown = await response.text();
+        parseContentMarkdown(markdown);
+      } catch {
+        applyContentConfig();
+      }
+    }
+
+    function parseContentMarkdown(markdown) {
+      const lines = markdown.split(/\r?\n/);
+      let currentSection = "";
+      const sectionBuffer = {
+        Description: [],
+        Metadata: [],
+        "Cover Intro": []
+      };
+
+      for (const line of lines) {
+        if (line.startsWith("# ")) {
+          contentConfig.eyebrow = line.slice(2).trim() || contentConfig.eyebrow;
+          continue;
+        }
+        if (line.startsWith("## ")) {
+          contentConfig.title = line.slice(3).trim() || contentConfig.title;
+          continue;
+        }
+        if (line.startsWith("### ")) {
+          currentSection = line.slice(4).trim();
+          continue;
+        }
+        if (currentSection && sectionBuffer[currentSection]) {
+          sectionBuffer[currentSection].push(line);
+        }
+      }
+
+      const description = sectionBuffer.Description.join("\n").trim();
+      if (description) {
+        contentConfig.description = description.replace(/\n+/g, " ");
+      }
+
+      const coverIntro = sectionBuffer["Cover Intro"].join("\n").trim();
+      if (coverIntro) {
+        contentConfig.coverIntro = coverIntro.replace(/\n+/g, " ");
+      }
+
+      for (const line of sectionBuffer.Metadata) {
+        const match = line.match(/^-+\s*([a-z_]+)\s*:\s*(.+)$/i);
+        if (!match) continue;
+        const [, key, value] = match;
+        if (key === "submissions_label") contentConfig.submissionsLabel = value.trim();
+        if (key === "format_label") contentConfig.formatLabel = value.trim();
+        if (key === "format_value") contentConfig.formatValue = value.trim();
+      }
+
+      applyContentConfig();
+    }
+
+    function applyContentConfig() {
+      heroEyebrow.textContent = contentConfig.eyebrow;
+      heroTitle.textContent = contentConfig.title;
+      detailsCopy.textContent = contentConfig.description;
+      submissionsLabel.textContent = contentConfig.submissionsLabel;
+      formatLabel.textContent = contentConfig.formatLabel;
+      formatValue.textContent = contentConfig.formatValue;
+      portfolioTitle = contentConfig.title;
+    }
 
     function setStatus(message, isError = false) {
       statusText.textContent = message;
@@ -723,7 +805,7 @@
         <div class="eyebrow">Portfolio Edition</div>
         <h2>${portfolioName}</h2>
         <p>
-          IND 209 Concepts and Interactions.
+          ${contentConfig.coverIntro}
         </p>
         <div class="status-bar">
           <span>Format: A3 Landscape</span>
@@ -953,6 +1035,8 @@
       }
     });
 
+    portfolioSources = await loadPdfList();
+    await loadContentConfig();
     renderLibrary(portfolioSources);
   </script>
 </body>
