@@ -5,6 +5,7 @@
 ### Description
 
 A portfolio page presenting 7 group works. Beginning with AI as a seemingly seamless everyday service, students investigated the hidden infrastructures that sustain it. Each work maps AI as a layered system, revealing the relation between interface, infrastructure, and planetary consequence.
+
 ### Metadata
 
 - submissions_label: All Submission

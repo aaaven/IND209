@@ -833,6 +833,7 @@
     }
 
     function buildSectionTitle(names) {
+      if (contentConfig.title) return contentConfig.title;
       if (names.length === 1) return names[0];
       return "Behavior-Consequence Mapping";
     }
