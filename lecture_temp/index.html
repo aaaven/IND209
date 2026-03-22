@@ -5,6 +5,9 @@
   <title>hey!</title>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.6.1/dist/reveal.css">
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.6.1/dist/theme/night.css">
+  <style>
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3 { text-align: center; }  </style>
 </head>
 <body>
   <div class="reveal">
@@ -22,9 +25,8 @@
   <script src="https://unpkg.com/reveal.js@4.6.1/plugin/notes/notes.js"></script>
   <script>
     Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-      plugins: [ RevealMarkdown, RevealNotes ]
+      plugins: [RevealMarkdown, RevealNotes],
+      slideNumber: true
     });
   </script>
 </body>
