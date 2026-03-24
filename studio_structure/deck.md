@@ -11,9 +11,9 @@ Understanding Infrastructure
 ↓  
 Behavior–Consequence Mapping  
 ↓  
-Embodied Coupling  
+Embodied Coupling Design & Prototyping 
 ↓  
-Physical AI Interface  
+Physical AI Interface Design 
 
 Each assignment transforms the previous one.
 
@@ -116,7 +116,7 @@ A layered system model of AI infrastructure and the planetary consquence behind.
 Not critique.  
 Not aesthetics.  
 
-A grounded operational diagram.
+A grounded operational diagram / a system map.
 
 </div>
 
@@ -172,11 +172,13 @@ But also:
 
 Through Stage 1, you have:
 
-- the variable you will be translating  
-- the dynamic you will be working with  
 - the behavior you will be trying to modulate  
+- the dynamic you will be working with  
+- the variable you will be translating  
 
-Stage 1 produces your **interaction design variables**.
+How can planetary-scale AI infrastructure be modeled and operationalized as dynamic interaction variables?
+
+<!-- Stage 1 produces your **interaction design variables**. -->
 
 </div>
 
@@ -196,7 +198,7 @@ Weeks 4–9
 
 <div style="text-align: left;">
 
-From modeling → translating and modulating. Core Question of Stage 2 are
+From modeling → translating and modulating (coupling). Core Question of Stage 2 are
 
 How can planetary infrastructure become bodily experience?
 
@@ -208,7 +210,7 @@ How can bodily experience modulate AI behavior?
 
 <div style="text-align: left;">
 
-In Assignment 2 – Part 1, you develop Coupling Concepts
+In Assignment 2 – Part 1, you design **Coupling Concepts**
 
 Select 4 mappings from Stage 1. For each, define/design:
 
@@ -222,17 +224,17 @@ Select 4 mappings from Stage 1. For each, define/design:
 
 #### You Must Design the Closed Loop
 
-Behavior
+Behavior (Interacting with AI)
 
-↓  interact
+↓  (1) modeling
 
-Infrastructure  
+Infrastructure / Planet 
 
-↓  translate
+↓  (2-1) translate
 
 Embodied Feedback  
 
-↓  modulate
+↓  (2-2) modulate
 
 Behavior  
 
@@ -242,7 +244,7 @@ This is infrastructural–embodied coupling.
 
 <div style="text-align: left;">
 
-In Assignment 2 – Part 2, you prototype coupling mechanisms.
+In Assignment 2 – Part 2, you prototype **Coupling Mechanisms**.
 
 Group voting selects top 4 coupling concepts. Each student leads ONE prototype. Prototypes must be:
 
@@ -266,7 +268,7 @@ Stage 1 gave you interaction variables.
 
 Stage 2 transforms them into:
 
-Embodied feedback and modulation mechanisms.
+Embodied feedback and modulation (i.e., coupling) mechanisms.
 
 This is the bridge between infrastructure and body.
 

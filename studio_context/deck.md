@@ -137,6 +137,7 @@ To support AI computation:
 • Load balancing allocates compute
 
 </div>
+
 ---
 
 #### The interface is minimal.
@@ -171,9 +172,8 @@ AI interaction is NOT abstract in "cloud," but embedded within planetary system:
 
 • Electricity generation systems  
 • Carbon emission networks  
-• Heat Discharge
+• Heat discharge
 • Water consumption cycles  
-
 • Rare-earth mineral extraction  
 • Hardware production chains & E-waste streams  
 • Land occupation and zoning  
