@@ -321,7 +321,7 @@ Coupling is interaction in which <span class="fragment highlight-current-blue">u
 
 ### You work on
 
-<div style="text-align:center; margin-top:80px; line-height:1.8;">
+<div style="text-align:center; margin-top:30px; line-height:1.1;">
 <span class="fragment">Interacting with AI behavior</span><br>
 <span class="fragment">↓</span><br>
 <span class="fragment">infrastructure dynamics</span><br>
@@ -330,7 +330,7 @@ Coupling is interaction in which <span class="fragment highlight-current-blue">u
 <span class="fragment">↓</span><br>
 <span class="fragment">embodied feedback</span><br>
 <span class="fragment">↓</span><br>
-<span class="fragment">behavior change</span>
+<span class="fragment">behavior change (i.e., modulation)</span>
 </div>
 
 ---
@@ -352,12 +352,12 @@ Coupling is interaction in which <span class="fragment highlight-current-blue">u
 
 ---
 
-## Final takeaway
+### Final takeaway
 
-# All coupling is interaction
-# but not all interaction is coupling
+#### All coupling is interaction
+#### but not all interaction is coupling
 
 ---
 
-# Coupling is interaction
-# that modulates behavior
+### Coupling is interaction
+### that modulates behavior
