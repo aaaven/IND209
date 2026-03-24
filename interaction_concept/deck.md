@@ -169,7 +169,7 @@ Pysical Computing Wikipedia
 
 --- -->
 
-### What Is Interaction?
+### What Is Interaction in Design?
 ##### From design theory to HCI models
 
 ##### By *Dr. Aven Le ZHOU*, 2026
