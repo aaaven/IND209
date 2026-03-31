@@ -383,7 +383,9 @@ action → system response → sensed consequence → changed behavior → new a
 
 ---
 
-## References
+### References
+
+<div style="font-size:0.8em; line-height:1.1;">
 
 Buchanan, R. (1992). Wicked problems in design thinking. *Design Issues, 8*(2), 5–21.
 
@@ -396,3 +398,4 @@ Maldonado, T., & Bonsiepe, G. (1964). Science and design. *Ulm*.
 Norman, D. A. (1988/2013). *The Design of Everyday Things*.
 
 Verplank, B. (2001). *Interaction Design Sketchbook* (unpublished manuscript).
+</div>
