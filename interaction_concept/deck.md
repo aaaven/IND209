@@ -34,47 +34,102 @@ interaction as a feedback loop between user and dynamic system
 
 ### Design-theory view
 
-#### Interaction is broader than computers
+#### Meredith Davis + Richard Buchanan
+
+- Davis expands interaction beyond screens
+- Buchanan positions interaction as a way to frame design itself
+- this opens interaction toward **communication, products, services, and systems**
+
+<br>
+
+form → meaning → context → interaction
+
+---
+
+#### Davis: Interaction is broader than computers
 
 - books can be designed for interaction
 - objects, spaces, messages, and systems all invite interaction
 - design is not only about form
-- design is also about how use unfolds
+- design is also about how use/function/experience unfolds
 
-#### Key idea: interaction is a **design frame**
+#### Key idea: interaction is to frame design
 
 ---
 
-#### Meredith Davis + Richard Buchanan
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/tt-QpN-E74c?si=e0bvebN-w-UeFfZ7&amp;start=137" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### What changed?
+---
 
-<div style="font-size:0.95em; line-height:1.5;">
-form → meaning → context → interaction
+##### Buchanan's broader design frame
+
+<div style="display:flex; gap:1.5rem; align-items:flex-start; justify-content:center;">
+  <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sttLI2xgYoIOfcaGHkPkFg.png" style="height:420px; width:auto; object-fit:contain;" />
+ 
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjacjDEeRu91Ht50-1t6ZzrYiEzdXUctBo8VeNR8fpPNetujDwHa7N_2UYSuFigoVe02nAXLlZbxIAaV9ZlfEqwIWWntlbdjMz0KwoybaGgIYOvuIBbGngfiX3iB1m-M7CH6-I9V3jVCOw/s1600/Orders+of+Design+-+Buchanan.jpg" style="height:420px; width:auto; object-fit:contain;" />
 </div>
 
-<br>
-
-- Davis expands interaction beyond screens
-- Buchanan positions interaction as a way to frame design itself
-- this opens interaction toward communication, products, services, and systems
-
 ---
 
-#### Buchanan's broader design frame
+##### Buchanan's broader design frame
 
-### Four orders of design
+<div style="display:flex; gap:2rem; align-items:flex-start;">
 
-<div style="font-size:0.9em; line-height:1.7;">
-1. symbols<br>
-2. things<br>
-3. actions<br>
-4. systems / environments
+<div style="flex:1;">
+
+![orders of design](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*sttLI2xgYoIOfcaGHkPkFg.png)
+
+<div style="font-size:0.7em; margin-top:0.5rem;">
+credit to <a href="https://medium.com/@shilp.design/navigating-the-design-landscape-buchanans-four-orders-13107982891a">Shilp Khatri</a>
 </div>
 
-interaction belongs especially to the **third and fourth orders** but it also reshapes how we read the first two
+</div>
+
+<div style="flex:1;">
+
+Four orders of design
+
+<div style="font-size:0.6 em; line-height:1;">
+1. Signs: Symbols and Visual Communications<br><br>
+2. Things: Objects, Products, and Artifacts<br><br>
+3. Actions: Interactions, Services, and Activities<br><br>
+4. Thoughts: Systems, Environments, and Organizations
+</div>
+
+</div>
+
+</div>
 
 ---
+
+##### Buchanan's broader design frame
+
+<div style="display:flex; gap:2rem; align-items:flex-start;">
+
+<div style="flex:1;">
+
+![orders of design](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjacjDEeRu91Ht50-1t6ZzrYiEzdXUctBo8VeNR8fpPNetujDwHa7N_2UYSuFigoVe02nAXLlZbxIAaV9ZlfEqwIWWntlbdjMz0KwoybaGgIYOvuIBbGngfiX3iB1m-M7CH6-I9V3jVCOw/s1600/Orders+of+Design+-+Buchanan.jpg)
+
+<div style="font-size:0.7em; margin-top:0.5rem;">
+credit to <a href="https://redeinovagov.blogspot.com/2015/11/four-orders-of-design-richard-buchanan.html">Por Espartaco</a>
+</div>
+
+</div>
+
+<div style="flex:1;">
+
+Interaction belongs especially to the **third and fourth orders** and it  reshapes how we read the first two
+
+</div>
+
+</div>
+
+---
+
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/D82kwO3-lgc?si=B-5_SBwzxthMK5yl&amp;start=87" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
 
 #### HCI view
 
@@ -87,23 +142,45 @@ interaction belongs especially to the **third and fourth orders** but it also re
 - user compares result with intention
 - user acts again
 
-##### Key structure is a **closed loop**
+<span class="fragment"> Key structure: interaction is a **closed loop**</span>
 
 ---
 
-#### HfG Ulm / early systems view
+#### HfG Ulm: Man-machine system
 
-### Man-machine system
+<div style="display:flex; gap:2rem; align-items:center;">
 
-<div style="font-size:0.9em; line-height:1.6; text-align:center;">
-display / output → human perception → decision / control → input / action → machine / system → display / output
+<div style="flex:1; font-size:0.7em">
+
+![man-machine system](https://www.dubberly.com/wp-content/uploads/2009/01/man_machine_system.png)
+
+credit to [Dubberly](https://www.dubberly.com/articles/what-is-interaction.html)
 </div>
 
-<br>
+<div style="flex:1; font-size:0.9em; line-height:1.6;">
 
-##### Main idea: interaction is not a one-way command, it is a **circulation of information**
+<div style="display:grid; gap:0.35rem; justify-items:center; text-align:center;">
+<div>decision / control</div>
+<div style="font-size:0.8em; line-height:0.6;">↓</div>
+<div>input / action</div>
+<div style="font-size:0.8em; line-height:0.6;">↓</div>
+<div>machine / system</div>
+<div style="font-size:0.8em; line-height:0.6;">↓</div>
+<div>display / output</div>
+<div style="font-size:0.8em; line-height:0.6;">↓</div>
+<div>human perception</div>
+<div style="font-size:0.8em; line-height:0.6;">↓</div>
+<div>decision / control</div>
+</div>
+
+</div>
+
+</div>
+
+<span class="fragment">Main idea: interaction is not a one-way command, it is a **circulation of information**</span>
 
 ---
+
 
 #### Why the man-machine model matters
 
@@ -114,9 +191,7 @@ display / output → human perception → decision / control → input / action 
 
 ---
 
-#### Licklider and symbiosis - A parallel origin
-
-### “Man-Computer Symbiosis”
+<!-- #### Licklider: “Man-Computer Symbiosis”
 
 - computers handle routine, formal, rapid operations
 - humans handle goals, judgment, heuristics, ambiguity
@@ -127,50 +202,29 @@ display / output → human perception → decision / control → input / action 
 human judgment ⇄ computer processing
 </div>
 
----
+--- -->
 
 #### Norman's gulf model
 
 ##### The problem is not only action but also interpretation
 
-<div style="display:flex; justify-content:space-between; align-items:center; font-size:0.9em;">
-<div>
-<strong>User</strong><br>
-goal<br>
-intention<br>
-action
+<div style="display:flex; gap:1rem; align-items:center;">
+  <img src="https://www.dubberly.com/wp-content/uploads/2009/01/execution_evaluation.png" style="flex:1; max-width:48%; height:auto; object-fit:contain;" />
+
+  <div style="flex:1; display:grid; gap:0.3rem; justify-items:center; text-align:center; font-size:0.7em; line-height:0.9;">
+    <div>User / Goal → intention → action</div>
+    <div style="font-size:0.7em; line-height:1;">↓</div>
+    <div><strong>Gulf of Execution</strong><br><br>can I figure out what to do?</div>
+    <div style="font-size:0.7em; line-height:1;">↓</div>    <div><strong>System</strong></div>
+    <div style="font-size:0.7em; line-height:1;">↓</div>    
+    <div>interface → dis  play / feedback</div>
+    <div style="font-size:0.7em; line-height:1;">↓</div>
+    <div><strong>Gulf of Evaluation</strong><br><br>can I understand what happened?</div>
+  </div>
 </div>
 
-<div style="font-size:1.4em;">
-→
-</div>
-
-<div>
-<strong>Gulf of Execution</strong><br>
-can I figure out<br>
-what to do?
-</div>
-
-<div style="font-size:1.4em;">
-→
-</div>
-
-<div>
-<strong>System</strong><br>
-state<br>
-display<br>
-feedback
-</div>
-
-<div style="font-size:1.4em;">
-→
-</div>
-
-<div>
-<strong>Gulf of Evaluation</strong><br>
-can I understand<br>
-what happened?
-</div>
+<div style="font-size:0.7em; margin-top:0.5rem;">
+credit to <a href="https://www.dubberly.com/articles/what-is-interaction.html">Dubberly</a>
 </div>
 
 ---
@@ -183,30 +237,36 @@ what happened?
   - figure out **what the system means**
 - design should shrink both gulfs
 
-#### In simple terms
-make action possible  
-make feedback legible
+<span class="fragment"> In simple terms: make action possible, make feedback legible </span>
 
 ---
 
 #### Norman expands the loop
 
-### Seven stages of action
+<div style="display:flex; gap:2rem; align-items:center;">
+  <div style="flex:1; font-size:0.7em;">
+    <img src="https://www.dubberly.com/wp-content/uploads/2009/01/seven_stages_action.png" style="max-width:100%; height:auto; object-fit:contain;" />
+    <div style="margin-top:0.5rem;">credit to <a href="https://www.dubberly.com/articles/what-is-interaction.html">Dubberly</a></div>
+  </div>
 
-
-<div style="font-size:0.9em; line-height:1.55;">
-1. form goal<br>
-2. form intention<br>
-3. specify action<br>
-4. execute action<br>
-5. perceive system state<br>
-6. interpret system state<br>
-7. evaluate outcome
+  <div style="flex:1;">
+    <h5>Seven stages of action</h5>
+    <div style="font-size:0.9em; line-height:1;">
+      1. form goal<br>
+      2. form intention<br>
+      3. specify action<br>
+      4. execute action<br>
+      5. perceive system state<br>
+      6. interpret system state<br>
+      7. evaluate outcome
+    </div>
+  </div>
 </div>
 
 ---
 
 ### Seven stages as a loop
+
 
 <div style="font-size:0.88em; line-height:1.6; text-align:center;">
 goal → intention → action specification → execution → perception → interpretation → evaluation → next goal
@@ -219,21 +279,40 @@ goal → intention → action specification → execution → perception → int
 
 ---
 
-#### Verplank
+#### Verplank model of interaction
 
+<div style="display:flex; gap:2rem; align-items:center;">
+  <div style="flex:1; font-size:0.7em;">
+    <img src="https://www.dubberly.com/wp-content/uploads/2009/01/interaction.png" style="max-width:100%; height:auto; object-fit:contain;" />
+    <div style="margin-top:0.5rem;">credit to <a href="https://www.dubberly.com/articles/what-is-interaction.html">Dubberly</a></div>
+  </div>
+
+  <div style="flex:1;">
+    <h5>How do you...feel / know / do ?</h5>
+    <div style="font-size:0.8em; line-height:0.9;">
+      <strong>feel</strong><br>
+      sensation<br>
+      response<br>
+      embodied experience
+      <br><br>
+      <strong>know</strong><br>
+      mapping<br>
+      model<br>
+      orientation
+      <br><br>
+      <strong>do</strong><br>
+      handle<br>
+      button<br>
+      gesture<br>
+      action
+    </div>
+  </div>
+</div>
 
 ---
 
-![Verplank](https://www.researchgate.net/profile/Bill-Verplank/publication/330921117/figure/fig1/AS:845489704558594@1578591862745/nteraction-design-sketch-by-Bill-Verplank.ppm)
 
----
-
-<iframe width="1120" height="630" src="https://www.youtube.com/embed/C3rxCLhzmXY?si=Kab-3U0U1hpo33mR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
----
-
-### How do you...
-### feel / know / do ?
+### How do you...feel / know / do ?
 
 <div style="display:flex; justify-content:space-around; align-items:flex-start; font-size:0.95em; text-align:center;">
 <div>
@@ -254,50 +333,43 @@ orientation
 <strong>do</strong><br>
 handle<br>
 button<br>
-gesture<br>
-action
+gesture
 </div>
 </div>
+
 
 ---
 
-### Verplank's model as design questions
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/C3rxCLhzmXY?si=Kab-3U0U1hpo33mR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+#### Verplank's model as design questions
 
 #### For the interaction designer
 
-- **How do you do?**  
-  what actions are available?
+- **How do user do?** what actions are available?
 
-- **How do you feel?**  
-  what is sensed or experienced?
+- **How do user feel?**  what is sensed or experienced?
 
-- **How do you know?**  
-  how is the situation understood?
+- **How do user know?**  how is the situation understood?
 
-##### Why it is beautiful: it translates systems theory into **designerly questions**
+- **How do user do?**  what actions are available?
+
+<span class="fragment"> Why it is beautiful: it translates systems theory into **designerly questions**</span>
 
 ---
 
-## Why this matters for interaction design students
+#### How these matters for interaction design
 
 - do not reduce interaction to clicking
 - do not reduce usability to efficiency
-- ask what kind of relation is being designed
 - ask whether the system merely reacts
 - or whether it shapes a meaningful feedback loop
 
 ---
 
-Pysical Computing Wikipedia
-
-![wikipedia](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Physical_computing.svg/1920px-Physical_computing.svg.png)
-
----
-
-
-#### A useful bridge to studio practice
-
-### From interaction to coupling
+#### A useful bridge to studio practice from interaction to coupling
 
 <div style="font-size:0.9em; line-height:1.6; text-align:center;">
 action → system response → sensed consequence → changed behavior → new action
@@ -307,19 +379,7 @@ action → system response → sensed consequence → changed behavior → new a
 
 - this is why feedback matters
 - this is why embodied modulation matters
-- this is why interaction can become behavioral shaping
-
----
-
-#### Which model is most useful when designing for AI?
-
-- the broad design-theory view?
-- the man-machine information loop?
-- Norman's gulfs?
-- seven stages of action?
-- Verplank's feel / know / do?
-
-#### Or do we need all of them at once?
+- this is where interaction becomes behavioral shaping
 
 ---
 
