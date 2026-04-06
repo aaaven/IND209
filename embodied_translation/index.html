@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>hey!</title>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.6.1/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.6.1/dist/theme/night.css">
+  <style>
+  .reveal .slides { text-align: left; }
+  .reveal h1, .reveal h2, .reveal h3 { text-align: center; }  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section
+        data-markdown="deck.md"
+        data-separator="^\r?\n---\r?\n$"
+        data-separator-vertical="^\r?\n----\r?\n$"
+        data-separator-notes="^Note:"
+      ></section>
+    </div>
+  </div>
+  <script src="https://unpkg.com/reveal.js@4.6.1/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.6.1/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      plugins: [RevealMarkdown, RevealNotes],
+      slideNumber: true
+    });
+  </script>
+</body>
+</html>
