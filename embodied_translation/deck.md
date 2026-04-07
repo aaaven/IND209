@@ -579,4 +579,13 @@ Benford et al., 2012
 <span>Benford, S., Greenhalgh, C., Giannachi, G., Walker, B., Marshall, J., &amp; Rodden, T. (2012). <a href="https://dl.acm.org/doi/10.1145/2207676.2208347"><em>Uncomfortable Interactions</em></a>. In <em>CHI ’12</em>.</span><br><br>
 <span>Park, J. S., Barber, R., Kirlik, A., &amp; Karahalios, K. (2019). <a href="https://dl.acm.org/doi/10.1145/3359204"><em>A Slow Algorithm Improves Users’ Assessments of the Algorithm’s Accuracy</em></a>. <em>PACM HCI, CSCW</em>.</span>
 
+---
+
+## References
+
+<div style="font-size:0.75em; line-height:1.2; margin-top:10px;">
+
+<span>Odom, W., Bertran, I., Hertz, G., Lin, H., Cen, A. Y. S., Harkness, M., &amp; Wakkary, R. (2019). <a href="https://doi.org/10.1145/3325480.3326567"><em>Unpacking the Thinking and Making Behind a Slow Technology Research Product with Slow Game</em></a>. In <em>Creativity &amp; Cognition (C&amp;C ’19)</em>.</span><br><br>
+<span>Pierce, J., &amp; Paulos, E. (2015). <a href="https://doi.org/10.1145/2702123.2702405"><em>Making Multiple Uses of the Obscura 1C Digital Camera: Reflecting on the Design, Production, Packaging and Distribution of a Counterfunctional Device</em></a>. In <em>CHI ’15</em>.</span><br><br>
+<span>Haliburton, L., Grüning, D. J., Riedel, F., Schmidt, A., &amp; Terzimehić, N. (2024). <a href="https://doi.org/10.1145/3613904.3642370"><em>A Longitudinal In-the-Wild Investigation of Design Frictions to Prevent Smartphone Overuse</em></a>. In <em>CHI ’24</em>.</span>
 </div>
