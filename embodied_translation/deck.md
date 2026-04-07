@@ -124,7 +124,6 @@
 <a href="https://link.springer.com/article/10.1007/PL00000019">Hallnäs &amp; Redström, 2001</a>
 </div>
 
-
 ---
 
 
@@ -156,6 +155,164 @@
 
 <div style="margin-top:40px; font-size:0.7em;" class="fragment">
 <a href="https://dl.acm.org/doi/10.1145/2207676.2208347">Benford et al., 2012</a>
+</div>
+
+---
+
+#### Case — Slow Game
+
+<div style="display:flex; gap:40px; align-items:flex-start; margin-top:10px;">
+
+<div style="flex:1.15;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lKA6WJX3GJk?si=E9l4lwh1FqsGxP5n&amp;start=415" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<div style="flex:1; font-size:0.7em; line-height:1.1;">
+
+##### What it is
+<ul>
+<li class="fragment">a slow technology research product</li>
+<li class="fragment">a small cube game unfolding over long time</li>
+</ul>
+
+##### What it does
+<ul>
+<li class="fragment">one move about every 18 hours</li>
+<li class="fragment">challenges memory, patience, observation</li>
+</ul>
+
+##### What to borrow
+<ul>
+<li class="fragment">pace itself can be the design material</li>
+<li class="fragment">interaction does not need instant response</li>
+<li class="fragment">slowness can shape attention</li>
+</ul>
+
+</div>
+</div>
+
+<div style="margin-top:20px; font-size:0.65em;" class="fragment">
+Odom et al., 2019
+</div>
+
+---
+
+#### Case — Obscura 1C
+
+<div style="display:flex; gap:40px; align-items:flex-start; margin-top:10px;">
+
+<div style="flex:1.15;">
+<img src="https://jamesjpierce.com/media/pages/projects/project-h/a26d8046aa-1668569955/smash-sequence.gif" style="width:100%; border:none; box-shadow:none;">
+</div>
+
+<div style="flex:1; font-size:0.7em; line-height:1.1;">
+
+##### What it is
+<ul>
+<li class="fragment">a counterfunctional digital camera</li>
+<li class="fragment">media can only be accessed by breaking it open</li>
+</ul>
+
+##### What it does
+<ul>
+<li class="fragment">turns convenience into uncertainty, patience, surprise</li>
+<li class="fragment">makes limitation itself the feature</li>
+</ul>
+
+##### What to borrow
+<ul>
+<li class="fragment">anti-efficiency can be material</li>
+<li class="fragment">remove convenience to create another value</li>
+</ul>
+
+</div>
+</div>
+
+<div style="margin-top:20px; font-size:0.65em;" class="fragment">
+<a href="https://jamesjpierce.com/projects/project-h">Pierce &amp; Paulos, 2015</a>
+</div>
+
+---
+
+#### Case — one sec
+
+<div style="display:flex; gap:40px; align-items:flex-start; margin-top:10px;">
+
+<div style="flex:1.15;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JnnCoIzulLA?si=ZraloWwXDuHVEKoc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+<div style="flex:1; font-size:0.7em; line-height:1.1;">
+
+##### What it is
+<ul>
+<li class="fragment">a smartphone intervention for overuse</li>
+<li class="fragment">adds a short interruption before opening an app</li>
+</ul>
+
+##### What it does
+<ul>
+<li class="fragment">inserts a microboundary into habit loops</li>
+<li class="fragment">supports more intentional app opening over time</li>
+</ul>
+
+##### What to borrow
+<ul>
+<li class="fragment">friction can be tiny but effective</li>
+<li class="fragment">a pause can break automaticity</li>
+<li class="fragment">microboundary first, stronger embodiment later</li>
+</ul>
+
+</div>
+</div>
+
+<div style="margin-top:20px; font-size:0.65em;" class="fragment">
+Haliburton et al., 2024
+</div>
+
+---
+
+
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/0njQpBwx9mo?si=7BECv3mNXBNtT0VY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+#### Case — Breathless
+
+<div style="display:flex; gap:40px; align-items:flex-start; margin-top:10px;">
+
+<div style="flex:1.15;">
+<img src="images/breathless_case.png" style="width:75%; border:none; box-shadow:none;">
+<img src="images/breathless_case2.png" style="width:75%; border:none; box-shadow:none;">
+
+</div>
+
+<div style="flex:1; font-size:0.7em; line-height:1.1;">
+
+##### What it is
+<ul>
+<li class="fragment">a swing controlled through breathing in a gas mask</li>
+<li class="fragment">a key example from uncomfortable interactions</li>
+</ul>
+
+##### What it does
+<ul>
+<li class="fragment">makes the body the control channel</li>
+<li class="fragment">uses fear, strain, unease, voyeurism</li>
+</ul>
+
+#### What to borrow
+<ul>
+<li class="fragment">discomfort is a deliberate tactic</li>
+<li class="fragment">it is stronger and more ethically charged</li>
+<li class="fragment">not default — only when conceptually necessary</li>
+</ul>
+
+</div>
+</div>
+
+<div style="margin-top:20px; font-size:0.65em;" class="fragment">
+Benford et al., 2012
 </div>
 
 ---
