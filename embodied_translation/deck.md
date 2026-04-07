@@ -1,5 +1,5 @@
-#### The Embodied Translation
-##### IND209 Studio Mini Lecture
+#### Embodied Translation
+##### How to Design the Embodied Feedback in Coupling?
 ##### By *[Dr. Aven Le ZHOU](https://aven.cc)*, 2026
 
 
