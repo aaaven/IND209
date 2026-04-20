@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design Portfolio Flipbook</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --ink: #f5f5f2;
+      --muted: #9f9f98;
+      --card: rgba(15, 15, 15, 0.82);
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #ffffff;
+      --accent-soft: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+      --book-width: min(78vw, 1200px);
+      --page-ratio: 1.4142;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.06), transparent 18%),
+        linear-gradient(135deg, #050505 0%, #0b0b0b 45%, #111111 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black, transparent 85%);
+    }
+
+    .shell {
+      width: min(1440px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .hero {
+      display: block;
+      padding: 12px 12px 28px;
+    }
+
+    .eyebrow,
+    .meta-label {
+      font-family: "Arial Narrow", Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 10px 0 16px;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      line-height: 0.93;
+      font-weight: 600;
+      letter-spacing: -0.05em;
+      max-width: 10ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 54ch;
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: rgba(245, 245, 242, 0.82);
+    }
+
+    .meta {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--card);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .meta-value {
+      font-size: 1.05rem;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 24px;
+      align-items: start;
+      padding: 22px 12px 0;
+    }
+
+    .details-copy {
+      color: rgba(245, 245, 242, 0.82);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+
+    .controls {
+      margin: 0 12px 22px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      align-items: center;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 18px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button.primary {
+      background: var(--ink);
+      color: #f6efe7;
+    }
+
+    button.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    button:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .viewer-wrap {
+      padding: 0 12px;
+    }
+
+    .viewer-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 28px;
+      padding: 28px;
+      min-height: 70vh;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.09), transparent 34%),
+        linear-gradient(180deg, rgba(14, 14, 14, 0.96), rgba(8, 8, 8, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .book-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      perspective: 2200px;
+      min-height: calc(var(--book-width) / var(--page-ratio));
+    }
+
+    .book-stage::before {
+      content: "";
+      position: absolute;
+      width: min(72vw, 1120px);
+      height: 36px;
+      bottom: 2%;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.56);
+      filter: blur(24px);
+      transform: translateY(16px);
+    }
+
+    .book {
+      position: relative;
+      width: var(--book-width);
+      aspect-ratio: var(--page-ratio);
+      transform-style: preserve-3d;
+    }
+
+    .book.is-hidden,
+    .status-bar.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .book {
+      transition: opacity 180ms ease;
+    }
+
+    .page {
+      position: absolute;
+      inset: 0;
+      transform-origin: 1.8% center;
+      transform-style: preserve-3d;
+      transition: opacity 420ms ease;
+      border-radius: 18px 26px 26px 18px;
+      will-change: opacity;
+    }
+
+    .page-face {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      backface-visibility: hidden;
+      background: #fbfbf8;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.3),
+        0 18px 40px rgba(0, 0, 0, 0.34);
+    }
+
+    .page-face::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.18), transparent 10%, transparent 88%, rgba(0, 0, 0, 0.12));
+      pointer-events: none;
+    }
+
+    .page-face::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(115deg, transparent 0%, transparent 58%, rgba(255, 255, 255, 0.2) 74%, rgba(0, 0, 0, 0.1) 100%);
+      opacity: 0.72;
+      pointer-events: none;
+    }
+
+    .page-back {
+      transform: rotateY(180deg);
+      background:
+        linear-gradient(135deg, rgba(244, 244, 239, 1), rgba(228, 228, 224, 1));
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      background: white;
+    }
+
+    .page-caption {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      color: rgba(18, 18, 18, 0.58);
+      z-index: 2;
+    }
+
+    .cover {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(22px, 3vw, 42px);
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 30%),
+        linear-gradient(150deg, rgba(8, 8, 8, 0.98), rgba(20, 20, 20, 0.96));
+      color: #f8f8f4;
+    }
+
+    .cover h2 {
+      margin: 12px 0 0;
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      max-width: 7ch;
+    }
+
+    .cover p {
+      align-self: end;
+      margin: 0;
+      max-width: 30ch;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .status-bar {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .status {
+      margin: 14px 12px 0;
+      min-height: 1.5em;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .loading {
+      position: absolute;
+      inset: 28px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: "Arial Narrow", Arial, sans-serif;
+      gap: 14px;
+      background: rgba(0, 0, 0, 0.32);
+      border-radius: 22px;
+      backdrop-filter: blur(6px);
+    }
+
+    .loading.hidden {
+      display: none;
+    }
+
+    .loading-note {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .loading-spinner {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-top-color: rgba(255, 255, 255, 0.92);
+      animation: spin 1s linear infinite;
+    }
+
+    .ready-indicator {
+      position: absolute;
+      inset: 28px;
+      display: grid;
+      place-items: center;
+      z-index: 5;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 220ms ease, visibility 220ms ease;
+    }
+
+    .ready-indicator span {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.42);
+      color: rgba(255, 255, 255, 0.92);
+      font-family: "Arial Narrow", Arial, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .ready-indicator.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .ready-indicator.is-waiting span {
+      color: rgba(255, 255, 255, 0.92);
+      background: rgba(0, 0, 0, 0.42);
+    }
+
+    .ready-indicator.is-ready span {
+      color: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .control-cue {
+      animation: buttonPulse 320ms ease;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes buttonPulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .book-stage {
+        min-height: calc(min(88vw, 1200px) / var(--page-ratio));
+      }
+
+      :root {
+        --book-width: min(88vw, 1200px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .viewer-frame {
+        padding: 18px;
+        min-height: 58vh;
+      }
+
+      .status-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .page-caption {
+        left: 12px;
+        right: 12px;
+        bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow" id="heroEyebrow">Design Portfolio</div>
+        <h2 id="heroTitle">Behavior-Consequence Mapping</h2>
+      </div>
+    </section>
+
+    <div class="viewer-wrap">
+      <section class="viewer-frame">
+        <div class="loading" id="loading">Preparing portfolio...</div>
+        <div class="ready-indicator is-waiting" id="readyIndicator"><span>Loading, please wait</span></div>
+        <div class="book-stage">
+          <div class="book" id="book"></div>
+        </div>
+        <div class="status-bar">
+          <div id="pageLabel">Cover</div>
+          <input id="scrubber" type="range" min="0" max="0" value="0">
+          <div id="pageCountLabel">0 pages</div>
+        </div>
+      </section>
+      <div class="status" id="statusText"></div>
+    </div>
+
+    <section class="controls">
+      <button class="secondary" id="prevBtn" type="button">Previous</button>
+      <button class="secondary" id="nextBtn" type="button">Next</button>
+    </section>
+
+    <section class="details">
+      <div class="details-copy" id="detailsCopy">
+        A portfolio page presenting 28 individual works. Beginning with ordinary AI behaviours and small acts of convenience, students traced how these interactions activate wider infrastructural processes and planetary consequences. Each work maps the relation between user action, hidden infrastructural activity, and planetary impact over time.
+      </div>
+      <aside class="meta">
+        <div>
+          <div class="meta-label" id="submissionsLabel">All Submission</div>
+          <div class="meta-value" id="sourceLabel">Local sample PDF</div>
+        </div>
+        <div>
+          <div class="meta-label" id="formatLabel">Format</div>
+          <div class="meta-value" id="formatValue">A3 Landscape Posters</div>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script type="module">
+    import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.min.mjs";
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.3.136/pdf.worker.min.mjs";
+
+    const DEFAULT_PDFS = [];
+    const book = document.getElementById("book");
+    const loading = document.getElementById("loading");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const scrubber = document.getElementById("scrubber");
+    const pageLabel = document.getElementById("pageLabel");
+    const pageCountLabel = document.getElementById("pageCountLabel");
+    const statusText = document.getElementById("statusText");
+    const sourceLabel = document.getElementById("sourceLabel");
+    const statusBar = document.querySelector(".status-bar");
+    const readyIndicator = document.getElementById("readyIndicator");
+    const heroEyebrow = document.getElementById("heroEyebrow");
+    const heroTitle = document.getElementById("heroTitle");
+    const detailsCopy = document.getElementById("detailsCopy");
+    const submissionsLabel = document.getElementById("submissionsLabel");
+    const formatLabel = document.getElementById("formatLabel");
+    const formatValue = document.getElementById("formatValue");
+
+    let pageElements = [];
+    let currentIndex = 0;
+    let portfolioSources = [...DEFAULT_PDFS];
+    let isRendering = false;
+    let renderToken = 0;
+    let cueTimeout = null;
+    let readyIndicatorTimeout = null;
+    let portfolioTitle = "Behavior-Consequence Mapping";
+    let portfolioEntries = [{ type: "cover" }];
+    let portfolioDocuments = [];
+    let totalContentPages = 0;
+    const pageCache = new Map();
+    const contentConfig = {
+      eyebrow: "Design Portfolio",
+      title: "Behavior-Consequence Mapping",
+      description: "A portfolio page presenting 28 individual works. Beginning with ordinary AI behaviours and small acts of convenience, students traced how these interactions activate wider infrastructural processes and planetary consequences. Each work maps the relation between user action, hidden infrastructural activity, and planetary impact over time.",
+      submissionsLabel: "All Submission",
+      formatLabel: "Format",
+      formatValue: "A3 Landscape Posters",
+      coverIntro: "IND 209 Concepts and Interactions."
+    };
+
+    async function loadPdfList() {
+      try {
+        const response = await fetch("pdf-list.md", { cache: "no-store" });
+        if (!response.ok) {
+          return [...DEFAULT_PDFS];
+        }
+        const markdown = await response.text();
+        const parsed = parsePdfListMarkdown(markdown);
+        return parsed.length ? parsed : [...DEFAULT_PDFS];
+      } catch {
+        return [...DEFAULT_PDFS];
+      }
+    }
+
+    function parsePdfListMarkdown(markdown) {
+      return markdown
+        .split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.startsWith("- "))
+        .map((line) => line.slice(2).trim())
+        .filter((line) => /\.pdf$/i.test(line));
+    }
+
+    async function loadContentConfig() {
+      try {
+        const response = await fetch("content.md", { cache: "no-store" });
+        if (!response.ok) {
+          applyContentConfig();
+          return;
+        }
+        const markdown = await response.text();
+        parseContentMarkdown(markdown);
+      } catch {
+        applyContentConfig();
+      }
+    }
+
+    function parseContentMarkdown(markdown) {
+      const lines = markdown.split(/\r?\n/);
+      let currentSection = "";
+      const sectionBuffer = {
+        Description: [],
+        Metadata: [],
+        "Cover Intro": []
+      };
+
+      for (const line of lines) {
+        if (line.startsWith("# ")) {
+          contentConfig.eyebrow = line.slice(2).trim() || contentConfig.eyebrow;
+          continue;
+        }
+        if (line.startsWith("## ")) {
+          contentConfig.title = line.slice(3).trim() || contentConfig.title;
+          continue;
+        }
+        if (line.startsWith("### ")) {
+          currentSection = line.slice(4).trim();
+          continue;
+        }
+        if (currentSection && sectionBuffer[currentSection]) {
+          sectionBuffer[currentSection].push(line);
+        }
+      }
+
+      const description = sectionBuffer.Description.join("\n").trim();
+      if (description) {
+        contentConfig.description = description.replace(/\n+/g, " ");
+      }
+
+      const coverIntro = sectionBuffer["Cover Intro"].join("\n").trim();
+      if (coverIntro) {
+        contentConfig.coverIntro = coverIntro.replace(/\n+/g, " ");
+      }
+
+      for (const line of sectionBuffer.Metadata) {
+        const match = line.match(/^-+\s*([a-z_]+)\s*:\s*(.+)$/i);
+        if (!match) continue;
+        const [, key, value] = match;
+        if (key === "submissions_label") contentConfig.submissionsLabel = value.trim();
+        if (key === "format_label") contentConfig.formatLabel = value.trim();
+        if (key === "format_value") contentConfig.formatValue = value.trim();
+      }
+
+      applyContentConfig();
+    }
+
+    function applyContentConfig() {
+      heroEyebrow.textContent = contentConfig.eyebrow;
+      heroTitle.textContent = contentConfig.title;
+      detailsCopy.textContent = contentConfig.description;
+      submissionsLabel.textContent = contentConfig.submissionsLabel;
+      formatLabel.textContent = contentConfig.formatLabel;
+      formatValue.textContent = contentConfig.formatValue;
+      portfolioTitle = contentConfig.title;
+    }
+
+    function setStatus(message, isError = false) {
+      statusText.textContent = message;
+      statusText.style.color = isError ? "#9d2f1f" : "var(--muted)";
+    }
+
+    function updateControls() {
+      const total = portfolioEntries.length;
+      const contentPages = totalContentPages;
+
+      prevBtn.disabled = !isRendering && currentIndex === 0;
+      nextBtn.disabled = !isRendering && (currentIndex === total - 1 || total === 0);
+      scrubber.max = String(Math.max(total - 1, 0));
+      scrubber.value = String(currentIndex);
+      scrubber.disabled = isRendering || total === 0;
+
+      if (currentIndex === 0) {
+        pageLabel.textContent = "Cover";
+      } else {
+        pageLabel.textContent = `Page ${currentIndex} of ${contentPages}`;
+      }
+
+      pageCountLabel.textContent = contentPages === 1 ? "1 poster page" : `${contentPages} poster pages`;
+    }
+
+    function renderCoverState(title = "Behavior-Consequence Mapping", message = "Loading portfolio...", totalPages = totalContentPages) {
+      const cover = buildCover(totalPages, title);
+      book.replaceChildren(cover);
+      pageElements = [cover];
+      currentIndex = 0;
+      updateControls();
+      loading.textContent = message;
+    }
+
+    function hideReadyIndicator() {
+      readyIndicator.classList.remove("is-visible", "is-ready", "is-waiting");
+      if (readyIndicatorTimeout) {
+        clearTimeout(readyIndicatorTimeout);
+        readyIndicatorTimeout = null;
+      }
+    }
+
+    function setReadyIndicator(message, state = "waiting", autoHideMs = 0) {
+      readyIndicator.innerHTML = `<span>${message}</span>`;
+      readyIndicator.classList.toggle("is-waiting", state === "waiting");
+      readyIndicator.classList.toggle("is-ready", state === "ready");
+      readyIndicator.classList.add("is-visible");
+      if (readyIndicatorTimeout) {
+        clearTimeout(readyIndicatorTimeout);
+        readyIndicatorTimeout = null;
+      }
+      if (autoHideMs > 0) {
+        readyIndicatorTimeout = setTimeout(() => {
+          hideReadyIndicator();
+        }, autoHideMs);
+      }
+    }
+
+    function pulseWaitingCue() {
+      setStatus("Still loading, please wait.");
+      setReadyIndicator("Still loading, please wait", "waiting");
+      nextBtn.classList.remove("control-cue");
+      void nextBtn.offsetWidth;
+      nextBtn.classList.add("control-cue");
+      if (cueTimeout) {
+        clearTimeout(cueTimeout);
+      }
+      cueTimeout = setTimeout(() => {
+        nextBtn.classList.remove("control-cue");
+      }, 360);
+    }
+
+    function setLoadingState(loadingActive, message = "Loading portfolio...") {
+      isRendering = loadingActive;
+      loading.classList.toggle("hidden", !loadingActive);
+      if (loadingActive) {
+        loading.innerHTML = `
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <div class="loading-note">${message}</div>
+        `;
+        statusBar.classList.add("is-hidden");
+        setReadyIndicator("Loading, please wait", "waiting");
+      } else {
+        statusBar.classList.remove("is-hidden");
+        hideReadyIndicator();
+      }
+      updateControls();
+    }
+
+    function getRenderScale(pdfPage) {
+      const baseViewport = pdfPage.getViewport({ scale: 1 });
+      const deviceScale = Math.min(window.devicePixelRatio || 1, 1.5);
+      const targetWidth = Math.min(window.innerWidth * 0.78, 1400) * deviceScale;
+      const scaled = targetWidth / baseViewport.width;
+      return Math.min(1.1, Math.max(0.72, scaled));
+    }
+
+    function goTo(index) {
+      if (isRendering) {
+        return;
+      }
+      const targetIndex = Math.min(Math.max(index, 0), Math.max(portfolioEntries.length - 1, 0));
+      const direction = targetIndex >= currentIndex ? "forward" : "backward";
+      showEntry(targetIndex, direction);
+    }
+
+    function duplicateCanvas(sourceCanvas) {
+      const clone = document.createElement("canvas");
+      clone.width = sourceCanvas.width;
+      clone.height = sourceCanvas.height;
+      clone.getContext("2d").drawImage(sourceCanvas, 0, 0);
+      return clone;
+    }
+
+    function createCaption(text, count) {
+      const caption = document.createElement("div");
+      caption.className = "page-caption";
+
+      const left = document.createElement("span");
+      left.textContent = text;
+      const right = document.createElement("span");
+      right.textContent = count;
+
+      caption.append(left, right);
+      return caption;
+    }
+
+    function createFace(extraClass = "") {
+      const face = document.createElement("div");
+      face.className = `page-face ${extraClass}`.trim();
+      return face;
+    }
+
+    function getDisplayName(pdfUrl) {
+      const clean = pdfUrl.split("/").pop() || pdfUrl;
+      return clean.replace(/\.pdf$/i, "");
+    }
+
+    function buildCover(totalPages, portfolioName) {
+      const page = document.createElement("article");
+      page.className = "page";
+
+      const front = createFace("cover");
+      front.innerHTML = `
+        <div class="eyebrow">Portfolio Edition</div>
+        <h2>${portfolioName}</h2>
+        <p>
+          ${contentConfig.coverIntro}
+        </p>
+        <div class="status-bar">
+          <span>Format: A3 Landscape</span>
+          <span>${totalPages} Pages</span>
+          <span>Folder Portfolio</span>
+        </div>
+      `;
+
+      const back = createFace("page-back cover");
+      back.innerHTML = `
+        <div class="eyebrow">Opening Spread</div>
+        <h2>Design Portfolio</h2>
+        <p>
+          This viewer renders every page directly from the source PDF, preserving layout while adding a presentation-grade flip interaction.
+        </p>
+        <div class="status-bar">
+          <span>Turn to Begin</span>
+          <span>Page 0</span>
+          <span>Interactive Preview</span>
+        </div>
+      `;
+
+      page.append(front, back);
+      return page;
+    }
+
+    function buildSectionTitle(names) {
+      if (names.length === 1) return names[0];
+      return "Behavior-Consequence Mapping";
+    }
+
+    function buildSectionCaption(name, pageNumber) {
+      return `${name}  ${String(pageNumber).padStart(2, "0")}`;
+    }
+
+    function buildPdfPage(canvasSource, entry) {
+      const page = document.createElement("article");
+      page.className = "page";
+
+      const front = createFace();
+      front.append(
+        duplicateCanvas(canvasSource),
+        createCaption(entry.name, String(entry.globalIndex).padStart(2, "0"))
+      );
+
+      const back = createFace("page-back");
+      back.append(
+        duplicateCanvas(canvasSource),
+        createCaption(buildSectionCaption(entry.name, entry.pageNumber), String(entry.globalIndex).padStart(2, "0"))
+      );
+
+      page.append(front, back);
+      return page;
+    }
+
+    async function ensurePageCanvas(entry) {
+      const cacheKey = `${entry.url}::${entry.pageNumber}`;
+      const cachedCanvas = pageCache.get(cacheKey);
+      if (cachedCanvas) {
+        return cachedCanvas;
+      }
+
+      const pdfPage = await entry.pdf.getPage(entry.pageNumber);
+      const viewport = pdfPage.getViewport({ scale: getRenderScale(pdfPage) });
+      const renderCanvas = document.createElement("canvas");
+      renderCanvas.width = viewport.width;
+      renderCanvas.height = viewport.height;
+      await pdfPage.render({
+        canvasContext: renderCanvas.getContext("2d"),
+        viewport
+      }).promise;
+      pageCache.set(cacheKey, renderCanvas);
+      return renderCanvas;
+    }
+
+    async function createEntryElement(entry) {
+      if (entry.type === "cover") {
+        return buildCover(totalContentPages, portfolioTitle);
+      }
+
+      const canvasSource = await ensurePageCanvas(entry);
+      return buildPdfPage(canvasSource, entry);
+    }
+
+    async function showEntry(index, direction = "forward") {
+      const entry = portfolioEntries[index];
+      if (!entry) return;
+
+      const currentRenderToken = ++renderToken;
+      isRendering = true;
+      updateControls();
+
+      const loadingMessage = index === 0 ? "Loading, please wait" : "Loading page, please wait";
+      setLoadingState(true, loadingMessage);
+      setStatus(loadingMessage);
+
+      try {
+        const nextElement = await createEntryElement(entry);
+        if (currentRenderToken !== renderToken) {
+          return;
+        }
+
+        book.replaceChildren(nextElement);
+        pageElements = [nextElement];
+        currentIndex = index;
+        nextElement.style.opacity = "0";
+        updateControls();
+
+        requestAnimationFrame(() => {
+          nextElement.style.opacity = "1";
+        });
+
+        setLoadingState(false);
+        setReadyIndicator("Ready to display", "ready", 450);
+        const readyMessage = index === 0
+          ? "Ready to display."
+          : `Ready to display. Showing page ${index} of ${totalContentPages}.`;
+        setStatus(readyMessage);
+      } catch (error) {
+        if (currentRenderToken !== renderToken) {
+          return;
+        }
+        renderCoverState(portfolioTitle, "Unable to finish loading");
+        setLoadingState(false);
+        setStatus(`Could not load PDF: ${error.message}`, true);
+      } finally {
+        if (currentRenderToken === renderToken) {
+          isRendering = false;
+          updateControls();
+        }
+      }
+    }
+
+    async function renderLibrary(pdfUrls) {
+      const currentRenderToken = ++renderToken;
+      portfolioTitle = buildSectionTitle(pdfUrls.map(getDisplayName));
+      sourceLabel.textContent = `${pdfUrls.length} PDFs`;
+      renderCoverState(portfolioTitle, "Loading, please wait");
+      setLoadingState(true, "Loading, please wait");
+      setStatus("Loading portfolio...");
+
+      try {
+        let totalPages = 0;
+        const documents = [];
+        for (const pdfUrl of pdfUrls) {
+          const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+          if (currentRenderToken !== renderToken) {
+            return;
+          }
+          documents.push({ pdf, name: getDisplayName(pdfUrl), url: pdfUrl });
+          totalPages += pdf.numPages;
+        }
+
+        if (currentRenderToken !== renderToken) {
+          return;
+        }
+
+        portfolioDocuments = documents;
+        totalContentPages = totalPages;
+        portfolioEntries = [{ type: "cover" }];
+
+        let runningPage = 1;
+        for (const documentEntry of documents) {
+          for (let pageNumber = 1; pageNumber <= documentEntry.pdf.numPages; pageNumber += 1) {
+            portfolioEntries.push({
+              type: "pdf",
+              pdf: documentEntry.pdf,
+              url: documentEntry.url,
+              name: documentEntry.name,
+              pageNumber,
+              globalIndex: runningPage
+            });
+            runningPage += 1;
+          }
+        }
+
+        renderCoverState(portfolioTitle, "Loading, please wait", totalContentPages);
+        setLoadingState(false);
+        setReadyIndicator("Ready to display", "ready", 450);
+        setStatus(`Ready to display. Loaded ${pdfUrls.length} PDFs with ${totalPages} pages.`);
+      } catch (error) {
+        if (currentRenderToken !== renderToken) {
+          return;
+        }
+        renderCoverState(portfolioTitle, "Unable to finish loading");
+        setLoadingState(false);
+        setStatus(`Could not load PDF: ${error.message}`, true);
+      } finally {
+        if (currentRenderToken === renderToken) {
+          isRendering = false;
+          updateControls();
+        }
+      }
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (isRendering) {
+        pulseWaitingCue();
+        return;
+      }
+      goTo(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (isRendering) {
+        pulseWaitingCue();
+        return;
+      }
+      goTo(currentIndex + 1);
+    });
+    scrubber.addEventListener("input", (event) => goTo(Number(event.target.value)));
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        if (isRendering) {
+          pulseWaitingCue();
+          return;
+        }
+        goTo(currentIndex + 1);
+      }
+      if (event.key === "ArrowLeft") {
+        if (isRendering) {
+          pulseWaitingCue();
+          return;
+        }
+        goTo(currentIndex - 1);
+      }
+    });
+
+    portfolioSources = await loadPdfList();
+    await loadContentConfig();
+    renderLibrary(portfolioSources);
+  </script>
+</body>
+</html>
